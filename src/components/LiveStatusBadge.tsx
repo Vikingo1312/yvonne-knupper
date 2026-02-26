@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTheme } from "./ThemeProvider";
 
 export default function LiveStatusBadge() {
     const [isLive, setIsLive] = useState<boolean | null>(null);
+    const { isDark } = useTheme();
 
     useEffect(() => {
         // Function to fetch the live status
@@ -29,9 +31,16 @@ export default function LiveStatusBadge() {
     // Don't render until we know the status to prevent hydration mismatch
     if (isLive === null) return null;
 
+    const bgClass = isDark
+        ? (isLive ? 'bg-surface-dark/80 hover:bg-surface-dark' : 'bg-surface-dark/50 opacity-70')
+        : (isLive ? 'bg-white/90 hover:bg-white shadow-md' : 'bg-white/70 opacity-70 shadow-sm');
+
+    const textClass = isDark ? 'text-white' : 'text-gray-800';
+    const borderClass = isDark ? 'border-white/10' : 'border-gray-200';
+
     return (
         <div className="fixed bottom-6 left-6 z-50 pointer-events-auto">
-            <div className={`flex items-center gap-3 px-4 py-2 rounded-full shadow-xl backdrop-blur-md border border-white/10 transition-all duration-500 ${isLive ? 'bg-surface-dark/80 hover:bg-surface-dark' : 'bg-surface-dark/50 opacity-70 cursor-default'}`}>
+            <div className={`flex items-center gap-3 px-4 py-2 rounded-full backdrop-blur-md border transition-all duration-500 cursor-default ${bgClass} ${borderClass}`}>
                 {/* Ping Animation Indicator */}
                 <div className="relative flex h-3 w-3">
                     {isLive && (
@@ -41,14 +50,15 @@ export default function LiveStatusBadge() {
                 </div>
 
                 {/* Text Content */}
-                <span className="font-heading text-xs tracking-widest uppercase text-white">
+                <span className={`font-heading text-xs tracking-widest uppercase ${textClass}`}>
                     {isLive ? (
                         <span>Online <span className="opacity-50 ml-1 hidden sm:inline">– Jetzt anrufen</span></span>
                     ) : (
-                        <span className="text-gray-400">Offline</span>
+                        <span className={isDark ? "text-gray-400" : "text-gray-500"}>Offline</span>
                     )}
                 </span>
             </div>
         </div>
     );
 }
+

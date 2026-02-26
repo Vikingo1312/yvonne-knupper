@@ -159,7 +159,7 @@ export default function Chatbot() {
                 aria-label="Chat öffnen"
             >
                 <Image
-                    src="/images/elf-chatbot.png"
+                    src="/images/elf-logo-v3.png"
                     alt="Spirituelle Beraterin"
                     width={64}
                     height={64}
@@ -176,7 +176,7 @@ export default function Chatbot() {
                     <div className="flex items-center gap-3 p-4 border-b border-mystic-800/30 bg-gradient-to-r from-mystic-900/50 to-surface-card">
                         <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
                             <Image
-                                src="/images/elf-chatbot.png"
+                                src="/images/elf-logo-v3.png"
                                 alt="Elf Guide"
                                 width={40}
                                 height={40}

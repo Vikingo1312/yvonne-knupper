@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTheme } from "./ThemeProvider";
 
 /* ═══════════════════════════════════════
    MYSTICAL RUNE PARTICLES
@@ -11,6 +12,7 @@ const RUNE_CHARS = ["ᚨ", "ᚱ", "ᚲ", "ᚷ", "ᚹ", "ᚺ", "ᚾ", "ᛁ", "ᛃ
 
 export default function RuneParticles() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const { isDark } = useTheme();
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -35,13 +37,23 @@ export default function RuneParticles() {
             color: string;
         }
 
-        const colors = [
+        const darkColors = [
             "rgba(192, 132, 252, ",   // purple
             "rgba(168, 85, 247, ",    // deeper purple
             "rgba(251, 113, 133, ",   // rose
             "rgba(147, 197, 253, ",   // ice blue
             "rgba(196, 181, 253, ",   // lavender
         ];
+
+        const lightColors = [
+            "rgba(124, 58, 237, ",    // vivid purple
+            "rgba(139, 92, 246, ",    // medium purple
+            "rgba(219, 39, 119, ",    // rose
+            "rgba(79, 70, 229, ",     // indigo
+            "rgba(168, 85, 247, ",    // deeper purple
+        ];
+
+        const colors = isDark ? darkColors : lightColors;
 
         const resize = () => {
             canvas.width = window.innerWidth;
@@ -54,7 +66,7 @@ export default function RuneParticles() {
             char: RUNE_CHARS[Math.floor(Math.random() * RUNE_CHARS.length)],
             size: 8 + Math.random() * 14,
             opacity: 0,
-            targetOpacity: 0.08 + Math.random() * 0.18,
+            targetOpacity: isDark ? (0.08 + Math.random() * 0.18) : (0.15 + Math.random() * 0.25),
             speed: 0.05 + Math.random() * 0.15,
             drift: (Math.random() - 0.5) * 0.3,
             phase: Math.random() * Math.PI * 2,
@@ -106,13 +118,14 @@ export default function RuneParticles() {
             cancelAnimationFrame(animationId);
             window.removeEventListener("resize", init);
         };
-    }, []);
+    }, [isDark]);
 
     return (
         <canvas
             ref={canvasRef}
             className="fixed inset-0 pointer-events-none z-[1]"
-            style={{ mixBlendMode: "screen" }}
+            style={{ mixBlendMode: isDark ? "screen" : "multiply" }}
         />
     );
 }
+
