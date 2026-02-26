@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 
+type LeadStatus = "new" | "done";
+
 interface Lead {
     id: number;
     name: string;
@@ -26,15 +28,47 @@ export default function AdminLeadsPage() {
             });
     }, []);
 
-    const markAsDone = async (id: number) => {
-        alert("Funktion: 'Als erledigt markieren' folgt.");
+    const updateStatus = async (id: number, status: LeadStatus) => {
+        try {
+            const res = await fetch("/api/leads", {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id, status }),
+            });
+            if (res.ok) {
+                setLeads(leads.map(l => l.id === id ? { ...l, status } : l));
+            }
+        } catch (err) {
+            console.error("Failed to update status:", err);
+        }
+    };
+
+    const deleteLead = async (id: number) => {
+        if (!confirm("Anfrage wirklich löschen?")) return;
+        try {
+            const res = await fetch("/api/leads", {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id }),
+            });
+            if (res.ok) {
+                setLeads(leads.filter(l => l.id !== id));
+            }
+        } catch (err) {
+            console.error("Failed to delete lead:", err);
+        }
     };
 
     if (loading) return <div className="text-white animate-pulse">Lade Anfragen...</div>;
 
     return (
         <div className="max-w-5xl">
-            <h1 className="font-display text-4xl italic glow-text mb-8">Kundenanfragen & Leads</h1>
+            <div className="flex items-center justify-between mb-8">
+                <h1 className="font-display text-4xl italic glow-text">Kundenanfragen</h1>
+                <span className="text-sm font-heading tracking-wider uppercase text-mystic-500">
+                    {leads.filter(l => l.status === "new").length} neue
+                </span>
+            </div>
 
             {leads.length === 0 ? (
                 <div className="glass p-8 rounded-2xl border border-mystic-800/30 text-center">
@@ -65,15 +99,27 @@ export default function AdminLeadsPage() {
                                 )}
                             </div>
 
-                            <div className="flex flex-col justify-center gap-2 border-t md:border-t-0 md:border-l border-mystic-800/30 pt-4 md:pt-0 md:pl-6 min-w-[120px]">
-                                <button onClick={() => markAsDone(lead.id)} className="bg-mystic-800 text-mystic-300 py-2 rounded-lg text-sm hover:bg-mystic-700 transition-colors">
-                                    Erledigt ✓
-                                </button>
+                            <div className="flex flex-col justify-center gap-2 border-t md:border-t-0 md:border-l border-mystic-800/30 pt-4 md:pt-0 md:pl-6 min-w-[130px]">
+                                <span className={`text-xs text-center px-2 py-1 rounded-full ${lead.status === "new" ? "bg-rose-500/20 text-rose-400" : "bg-green-500/20 text-green-400"}`}>
+                                    {lead.status === "new" ? "● Neu" : "✓ Erledigt"}
+                                </span>
+                                {lead.status === "new" ? (
+                                    <button onClick={() => updateStatus(lead.id, "done")} className="bg-green-800/50 text-green-300 py-2 rounded-lg text-sm hover:bg-green-700/50 transition-colors">
+                                        Als erledigt ✓
+                                    </button>
+                                ) : (
+                                    <button onClick={() => updateStatus(lead.id, "new")} className="bg-mystic-800/50 text-mystic-300 py-2 rounded-lg text-sm hover:bg-mystic-700/50 transition-colors">
+                                        Wieder öffnen
+                                    </button>
+                                )}
                                 {lead.phone && (
                                     <a href={`https://wa.me/${lead.phone.replace(/[^0-9]/g, "")}`} target="_blank" rel="noopener noreferrer" className="bg-[#25D366]/20 text-[#25D366] py-2 rounded-lg text-sm hover:bg-[#25D366]/30 text-center transition-colors">
                                         WhatsApp
                                     </a>
                                 )}
+                                <button onClick={() => deleteLead(lead.id)} className="bg-red-900/30 text-red-400 py-2 rounded-lg text-sm hover:bg-red-800/40 transition-colors">
+                                    Löschen
+                                </button>
                             </div>
                         </div>
                     ))}

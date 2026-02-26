@@ -1,5 +1,6 @@
 import { initDB } from "@/lib/db";
 import Link from "next/link";
+import ContactForm from "@/components/ContactForm";
 
 export default async function KontaktPage() {
     let workingHours = "Individuelle Terminvereinbarung nach Absprache.";
@@ -91,6 +92,12 @@ export default async function KontaktPage() {
                             Telefonisch & per WhatsApp
                         </span>
                     </div>
+                </div>
+
+                {/* Contact Form */}
+                <div className="mb-16">
+                    <div className="w-32 h-px bg-gradient-to-r from-transparent via-mystic-500 to-transparent mx-auto mb-10" />
+                    <ContactForm />
                 </div>
 
                 {/* USt-IdNr */}
