@@ -18,15 +18,26 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                     </p>
                 </div>
 
-                <button
-                    onClick={() => setIsOpen(!isOpen)}
-                    className="relative w-12 h-12 flex flex-col justify-center items-center gap-[6px] text-accent-silver hover:text-white transition-colors z-50 rounded-full bg-mystic-900/50 border border-mystic-800/30 glow-hover"
-                    aria-label="Admin Menü"
-                >
-                    <span className={`block w-6 h-[2px] bg-current transform transition duration-500 ease-in-out ${isOpen ? 'rotate-45 translate-y-[8px]' : ''}`} />
-                    <span className={`block w-6 h-[2px] bg-current transform transition duration-500 ease-in-out ${isOpen ? 'opacity-0' : ''}`} />
-                    <span className={`block w-6 h-[2px] bg-current transform transition duration-500 ease-in-out ${isOpen ? '-rotate-45 -translate-y-[8px]' : ''}`} />
-                </button>
+                <div className="flex items-center gap-3">
+                    <form action={logoutAdmin}>
+                        <button
+                            type="submit"
+                            className="px-4 py-2 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 hover:bg-rose-500/20 hover:text-rose-300 transition-all font-heading text-xs tracking-widest uppercase"
+                        >
+                            Ausloggen
+                        </button>
+                    </form>
+
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="relative w-12 h-12 flex flex-col justify-center items-center gap-[6px] text-accent-silver hover:text-white transition-colors z-50 rounded-full bg-mystic-900/50 border border-mystic-800/30 glow-hover"
+                        aria-label="Admin Menü"
+                    >
+                        <span className={`block w-6 h-[2px] bg-current transform transition duration-500 ease-in-out ${isOpen ? 'rotate-45 translate-y-[8px]' : ''}`} />
+                        <span className={`block w-6 h-[2px] bg-current transform transition duration-500 ease-in-out ${isOpen ? 'opacity-0' : ''}`} />
+                        <span className={`block w-6 h-[2px] bg-current transform transition duration-500 ease-in-out ${isOpen ? '-rotate-45 -translate-y-[8px]' : ''}`} />
+                    </button>
+                </div>
             </header>
 
             {/* Main Content */}
