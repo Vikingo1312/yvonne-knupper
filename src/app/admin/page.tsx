@@ -47,7 +47,7 @@ export default function AdminDashboardPage() {
     }, []);
 
     if (loading) {
-        return <div className="text-white animate-pulse text-center py-20">Dashboard wird geladen...</div>;
+        return <div className="text-[var(--text-primary)] animate-pulse text-center py-20">Dashboard wird geladen...</div>;
     }
 
     return (
@@ -84,21 +84,21 @@ export default function AdminDashboardPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <a href="/admin/leads" className="glass rounded-2xl p-6 border border-mystic-800/30 hover:border-rose-500/30 transition-colors group">
                     <span className="text-2xl block mb-3">📬</span>
-                    <h3 className="font-display text-lg italic text-white group-hover:text-rose-400 transition-colors mb-1">Anfragen verwalten</h3>
+                    <h3 className="font-display text-lg italic text-[var(--text-primary)] group-hover:text-rose-400 transition-colors mb-1">Anfragen verwalten</h3>
                     <p className="text-sm text-[var(--text-secondary)]">
                         {stats?.newLeads ? `${stats.newLeads} neue Anfrage${stats.newLeads > 1 ? "n" : ""}` : "Keine neuen Anfragen"}
                     </p>
                 </a>
                 <a href="/admin/settings" className="glass rounded-2xl p-6 border border-mystic-800/30 hover:border-mystic-500/30 transition-colors group">
                     <span className="text-2xl block mb-3">⚙️</span>
-                    <h3 className="font-display text-lg italic text-white group-hover:text-mystic-400 transition-colors mb-1">Einstellungen</h3>
+                    <h3 className="font-display text-lg italic text-[var(--text-primary)] group-hover:text-mystic-400 transition-colors mb-1">Einstellungen</h3>
                     <p className="text-sm text-[var(--text-secondary)]">
                         Live-Status, Banner, Arbeitszeiten
                     </p>
                 </a>
                 <a href="https://yvonne-knupper.vercel.app" target="_blank" rel="noopener noreferrer" className="glass rounded-2xl p-6 border border-mystic-800/30 hover:border-green-500/30 transition-colors group">
                     <span className="text-2xl block mb-3">🌐</span>
-                    <h3 className="font-display text-lg italic text-white group-hover:text-green-400 transition-colors mb-1">Website ansehen</h3>
+                    <h3 className="font-display text-lg italic text-[var(--text-primary)] group-hover:text-green-400 transition-colors mb-1">Website ansehen</h3>
                     <p className="text-sm text-[var(--text-secondary)]">
                         yvonne-knupper.vercel.app
                     </p>
@@ -127,7 +127,7 @@ export default function AdminDashboardPage() {
                             <div key={lead.id} className="flex items-center gap-4 p-4 rounded-xl bg-surface-dark/30 hover:bg-surface-dark/50 transition-colors">
                                 <div className={`w-2 h-2 rounded-full flex-shrink-0 ${lead.status === "new" ? "bg-rose-400" : "bg-green-400"}`} />
                                 <div className="flex-1 min-w-0">
-                                    <p className="text-white font-body truncate">
+                                    <p className="text-[var(--text-primary)] font-body truncate">
                                         <strong>{lead.name}</strong>
                                         {lead.service && <span className="text-mystic-400 text-sm ml-2">· {lead.service}</span>}
                                     </p>

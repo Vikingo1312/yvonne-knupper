@@ -3,11 +3,13 @@
 import Link from "next/link";
 import { ReactNode, useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import { useTheme } from "@/components/ThemeProvider";
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
     const [isOpen, setIsOpen] = useState(false);
     const router = useRouter();
     const pathname = usePathname();
+    const { isDark, toggleTheme } = useTheme();
 
     // Hide main site elements (Navbar, Footer, Chatbot, WhatsApp, etc.)
     useEffect(() => {
@@ -31,36 +33,47 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     return (
         <div className="min-h-screen bg-[var(--bg-primary)] flex flex-col">
             {/* Admin Header */}
-            <header className="h-20 bg-surface-dark/50 border-b border-mystic-800/30 flex items-center justify-between px-6 sticky top-0 z-40 backdrop-blur-md">
-                <div>
-                    <h2 className="font-display text-2xl italic glow-text">Admin Panel</h2>
-                    <p className="font-heading text-xs tracking-widest text-mystic-500 uppercase">
+            <header className="h-16 sm:h-20 bg-[var(--bg-surface)]/80 border-b border-mystic-800/30 flex items-center justify-between px-3 sm:px-6 sticky top-0 z-40 backdrop-blur-md">
+                <div className="min-w-0">
+                    <h2 className="font-display text-lg sm:text-2xl italic glow-text truncate">Admin Panel</h2>
+                    <p className="font-heading text-[10px] sm:text-xs tracking-widest text-mystic-500 uppercase hidden sm:block">
                         Yvonne Knupper
                     </p>
                 </div>
 
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+                    {/* Theme Toggle */}
+                    <button
+                        onClick={toggleTheme}
+                        className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-[var(--bg-card)] border border-mystic-800/30 hover:border-mystic-500/50 transition-all text-lg"
+                        aria-label="Theme wechseln"
+                    >
+                        {isDark ? "🌙" : "☀️"}
+                    </button>
+
+                    {/* Logout */}
                     <button
                         onClick={handleLogout}
-                        className="px-4 py-2 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 hover:bg-rose-500/20 hover:text-rose-300 transition-all font-heading text-xs tracking-widest uppercase"
+                        className="px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 hover:bg-rose-500/20 hover:text-rose-300 transition-all font-heading text-[10px] sm:text-xs tracking-widest uppercase"
                     >
                         Ausloggen
                     </button>
 
+                    {/* Hamburger */}
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="relative w-12 h-12 flex flex-col justify-center items-center gap-[6px] text-accent-silver hover:text-white transition-colors z-50 rounded-full bg-mystic-900/50 border border-mystic-800/30 glow-hover"
+                        className="relative w-9 h-9 sm:w-12 sm:h-12 flex flex-col justify-center items-center gap-[5px] sm:gap-[6px] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors z-50 rounded-full bg-[var(--bg-card)] border border-mystic-800/30 glow-hover"
                         aria-label="Admin Menü"
                     >
-                        <span className={`block w-6 h-[2px] bg-current transform transition duration-500 ease-in-out ${isOpen ? 'rotate-45 translate-y-[8px]' : ''}`} />
-                        <span className={`block w-6 h-[2px] bg-current transform transition duration-500 ease-in-out ${isOpen ? 'opacity-0' : ''}`} />
-                        <span className={`block w-6 h-[2px] bg-current transform transition duration-500 ease-in-out ${isOpen ? '-rotate-45 -translate-y-[8px]' : ''}`} />
+                        <span className={`block w-5 sm:w-6 h-[2px] bg-current transform transition duration-500 ease-in-out ${isOpen ? 'rotate-45 translate-y-[7px] sm:translate-y-[8px]' : ''}`} />
+                        <span className={`block w-5 sm:w-6 h-[2px] bg-current transform transition duration-500 ease-in-out ${isOpen ? 'opacity-0' : ''}`} />
+                        <span className={`block w-5 sm:w-6 h-[2px] bg-current transform transition duration-500 ease-in-out ${isOpen ? '-rotate-45 -translate-y-[7px] sm:-translate-y-[8px]' : ''}`} />
                     </button>
                 </div>
             </header>
 
             {/* Main Content */}
-            <main className="flex-1 overflow-auto p-4 sm:p-10 relative">
+            <main className="flex-1 overflow-auto p-3 sm:p-10 relative">
                 {children}
 
                 {/* Fullscreen Overlay Admin Menu */}
@@ -69,18 +82,18 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                         }`}
                 >
                     <div
-                        className="flex flex-col items-center gap-10 text-center w-full px-6"
+                        className="flex flex-col items-center gap-8 sm:gap-10 text-center w-full px-6"
                         style={{ transform: isOpen ? 'translateY(0)' : 'translateY(20px)', opacity: isOpen ? 1 : 0, transition: 'all 0.5s ease-out 0.2s' }}
                     >
-                        <span className="font-heading text-xs tracking-[0.5em] uppercase text-mystic-500 font-light hidden sm:block">
+                        <span className="font-heading text-xs tracking-[0.5em] uppercase text-mystic-500 font-light">
                             Admin Navigation
                         </span>
 
-                        <nav className="flex flex-col gap-6 sm:gap-8 w-full max-w-sm">
+                        <nav className="flex flex-col gap-5 sm:gap-8 w-full max-w-sm">
                             <Link
                                 href="/admin"
                                 onClick={() => setIsOpen(false)}
-                                className={`font-display text-3xl sm:text-5xl tracking-wide italic transition-all duration-300 transform hover:scale-105 ${pathname === "/admin" ? "text-mystic-400" : "text-white hover:text-mystic-400"
+                                className={`font-display text-2xl sm:text-5xl tracking-wide italic transition-all duration-300 transform hover:scale-105 ${pathname === "/admin" ? "text-mystic-400" : "text-[var(--text-primary)] hover:text-mystic-400"
                                     }`}
                             >
                                 📊 Dashboard
@@ -88,7 +101,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                             <Link
                                 href="/admin/leads"
                                 onClick={() => setIsOpen(false)}
-                                className={`font-display text-3xl sm:text-5xl tracking-wide italic transition-all duration-300 transform hover:scale-105 ${pathname === "/admin/leads" ? "text-mystic-400" : "text-white hover:text-mystic-400"
+                                className={`font-display text-2xl sm:text-5xl tracking-wide italic transition-all duration-300 transform hover:scale-105 ${pathname === "/admin/leads" ? "text-mystic-400" : "text-[var(--text-primary)] hover:text-mystic-400"
                                     }`}
                             >
                                 📬 Anfragen
@@ -96,14 +109,14 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                             <Link
                                 href="/admin/settings"
                                 onClick={() => setIsOpen(false)}
-                                className={`font-display text-3xl sm:text-5xl tracking-wide italic transition-all duration-300 transform hover:scale-105 ${pathname === "/admin/settings" ? "text-mystic-400" : "text-white hover:text-mystic-400"
+                                className={`font-display text-2xl sm:text-5xl tracking-wide italic transition-all duration-300 transform hover:scale-105 ${pathname === "/admin/settings" ? "text-mystic-400" : "text-[var(--text-primary)] hover:text-mystic-400"
                                     }`}
                             >
                                 ⚙️ Einstellungen
                             </Link>
                         </nav>
 
-                        <div className="mt-8 flex flex-col items-center gap-4">
+                        <div className="mt-6 flex flex-col items-center gap-4">
                             <div className="w-12 h-px bg-mystic-500/30" />
                             <button
                                 onClick={() => { setIsOpen(false); handleLogout(); }}
@@ -114,7 +127,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                             <Link
                                 href="/"
                                 onClick={() => setIsOpen(false)}
-                                className="font-heading text-sm tracking-widest uppercase text-mystic-400 hover:text-white transition-colors"
+                                className="font-heading text-sm tracking-widest uppercase text-mystic-400 hover:text-[var(--text-primary)] transition-colors"
                             >
                                 ← Zurück zur Website
                             </Link>
