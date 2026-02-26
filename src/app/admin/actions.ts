@@ -7,9 +7,9 @@ export async function loginAdmin(formData: FormData) {
     const username = formData.get("username");
     const password = formData.get("password");
 
-    // Use environment variable if set, otherwise default
-    const validUsername = process.env.ADMIN_USERNAME || "admin";
-    const validPassword = process.env.ADMIN_PASSWORD || "admin123";
+    // Hardcoded credentials
+    const validUsername = "admin";
+    const validPassword = "Elfe2026";
 
     if (username === validUsername && password === validPassword) {
         // Set cookie for 30 days
