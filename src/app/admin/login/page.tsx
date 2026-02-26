@@ -1,26 +1,39 @@
 "use client";
 
 import { useState } from "react";
-import { loginAdmin } from "@/app/admin/actions";
 import { useRouter } from "next/navigation";
 
 export default function AdminLoginPage() {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
     const router = useRouter();
 
-    const handleSubmit = async (formData: FormData) => {
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
         setLoading(true);
         setError(null);
 
-        const result = await loginAdmin(formData);
+        try {
+            const res = await fetch("/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password }),
+            });
 
-        if (result?.error) {
-            setError(result.error);
+            const data = await res.json();
+
+            if (res.ok && data.success) {
+                router.push("/admin");
+                router.refresh();
+            } else {
+                setError(data.error || "Falsches Passwort oder Benutzername");
+                setLoading(false);
+            }
+        } catch {
+            setError("Verbindungsfehler. Bitte versuche es erneut.");
             setLoading(false);
-        } else {
-            router.push("/admin");
-            router.refresh();
         }
     };
 
@@ -32,18 +45,20 @@ export default function AdminLoginPage() {
                 </span>
                 <h1 className="font-display text-4xl italic glow-text mb-8">Admin Login</h1>
 
-                <form action={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-4">
                         <input
                             type="text"
-                            name="username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
                             required
                             placeholder="Benutzername"
                             className="w-full bg-surface-dark/50 border border-mystic-800/50 rounded-xl px-4 py-4 text-white placeholder-mystic-600 focus:outline-none focus:border-mystic-500 transition-colors text-center"
                         />
                         <input
                             type="password"
-                            name="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             required
                             placeholder="Passwort eingeben"
                             className="w-full bg-surface-dark/50 border border-mystic-800/50 rounded-xl px-4 py-4 text-white placeholder-mystic-600 focus:outline-none focus:border-mystic-500 transition-colors text-center"

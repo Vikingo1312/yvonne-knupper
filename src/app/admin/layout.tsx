@@ -2,10 +2,17 @@
 
 import Link from "next/link";
 import { ReactNode, useState } from "react";
-import { logoutAdmin } from "@/app/admin/actions";
+import { useRouter } from "next/navigation";
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
     const [isOpen, setIsOpen] = useState(false);
+    const router = useRouter();
+
+    const handleLogout = async () => {
+        await fetch("/api/auth/logout", { method: "POST" });
+        router.push("/admin/login");
+        router.refresh();
+    };
 
     return (
         <div className="min-h-screen bg-[var(--bg-primary)] flex flex-col">
@@ -19,14 +26,12 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                 </div>
 
                 <div className="flex items-center gap-3">
-                    <form action={logoutAdmin}>
-                        <button
-                            type="submit"
-                            className="px-4 py-2 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 hover:bg-rose-500/20 hover:text-rose-300 transition-all font-heading text-xs tracking-widest uppercase"
-                        >
-                            Ausloggen
-                        </button>
-                    </form>
+                    <button
+                        onClick={handleLogout}
+                        className="px-4 py-2 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 hover:bg-rose-500/20 hover:text-rose-300 transition-all font-heading text-xs tracking-widest uppercase"
+                    >
+                        Ausloggen
+                    </button>
 
                     <button
                         onClick={() => setIsOpen(!isOpen)}
@@ -86,15 +91,12 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
 
                         <div className="mt-8 flex flex-col items-center gap-4">
                             <div className="w-12 h-px bg-mystic-500/30" />
-                            <form action={logoutAdmin}>
-                                <button
-                                    type="submit"
-                                    className="font-heading text-sm tracking-widest uppercase text-rose-400 hover:text-rose-300 transition-colors mb-2"
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    Ausloggen
-                                </button>
-                            </form>
+                            <button
+                                onClick={() => { setIsOpen(false); handleLogout(); }}
+                                className="font-heading text-sm tracking-widest uppercase text-rose-400 hover:text-rose-300 transition-colors mb-2"
+                            >
+                                Ausloggen
+                            </button>
                             <Link
                                 href="/"
                                 onClick={() => setIsOpen(false)}
