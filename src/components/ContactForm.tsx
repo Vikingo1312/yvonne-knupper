@@ -88,7 +88,7 @@ export default function ContactForm() {
                     placeholder="Dein Name *"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full bg-surface-dark/50 border border-mystic-800/50 rounded-xl px-4 py-3 text-white placeholder-mystic-600 focus:outline-none focus:border-mystic-500 transition-colors"
+                    className="w-full bg-[var(--bg-card)] border border-mystic-800/50 rounded-xl px-4 py-3 text-[var(--text-primary)] placeholder-mystic-600 focus:outline-none focus:border-mystic-500 transition-colors"
                     required
                 />
                 <input
@@ -96,23 +96,23 @@ export default function ContactForm() {
                     placeholder="Deine E-Mail"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full bg-surface-dark/50 border border-mystic-800/50 rounded-xl px-4 py-3 text-white placeholder-mystic-600 focus:outline-none focus:border-mystic-500 transition-colors"
+                    className="w-full bg-[var(--bg-card)] border border-mystic-800/50 rounded-xl px-4 py-3 text-[var(--text-primary)] placeholder-mystic-600 focus:outline-none focus:border-mystic-500 transition-colors"
                 />
                 <input
                     type="tel"
                     placeholder="Deine Telefonnummer"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    className="w-full bg-surface-dark/50 border border-mystic-800/50 rounded-xl px-4 py-3 text-white placeholder-mystic-600 focus:outline-none focus:border-mystic-500 transition-colors"
+                    className="w-full bg-[var(--bg-card)] border border-mystic-800/50 rounded-xl px-4 py-3 text-[var(--text-primary)] placeholder-mystic-600 focus:outline-none focus:border-mystic-500 transition-colors"
                 />
                 <select
                     value={form.service}
                     onChange={(e) => setForm({ ...form, service: e.target.value })}
-                    className="w-full bg-surface-dark/50 border border-mystic-800/50 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-mystic-500 transition-colors appearance-none"
+                    className="w-full bg-[var(--bg-card)] border border-mystic-800/50 rounded-xl px-4 py-3 text-[var(--text-primary)] focus:outline-none focus:border-mystic-500 transition-colors appearance-none"
                 >
-                    <option value="" className="bg-surface-dark">Interesse an...</option>
+                    <option value="" className="bg-[var(--bg-card)] text-[var(--text-secondary)]">Interesse an...</option>
                     {services.map((s) => (
-                        <option key={s} value={s} className="bg-surface-dark">{s}</option>
+                        <option key={s} value={s} className="bg-[var(--bg-card)] text-[var(--text-primary)]">{s}</option>
                     ))}
                 </select>
             </div>
@@ -122,7 +122,7 @@ export default function ContactForm() {
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 rows={4}
-                className="w-full bg-surface-dark/50 border border-mystic-800/50 rounded-xl px-4 py-3 text-white placeholder-mystic-600 focus:outline-none focus:border-mystic-500 transition-colors resize-none"
+                className="w-full bg-[var(--bg-card)] border border-mystic-800/50 rounded-xl px-4 py-3 text-[var(--text-primary)] placeholder-mystic-600 focus:outline-none focus:border-mystic-500 transition-colors resize-none"
             />
 
             {error && (
