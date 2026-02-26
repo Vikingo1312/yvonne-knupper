@@ -36,17 +36,17 @@ export default function RootLayout({
         <html lang="de" className="dark">
             <body className="antialiased">
                 <ThemeProvider>
-                    <AnnouncementBar />
+                    <div id="announcement-bar"><AnnouncementBar /></div>
                     <Particles />
                     <RuneParticles />
                     <div className="nebula-overlay" />
-                    <Navbar />
+                    <div id="main-navbar"><Navbar /></div>
                     <main className="relative z-10">{children}</main>
-                    <Footer />
+                    <div id="main-footer"><Footer /></div>
                     <ScrollIndicator />
-                    <Chatbot />
-                    <WhatsAppButton />
-                    <LiveStatusBadge />
+                    <div id="chatbot-widget"><Chatbot /></div>
+                    <div id="whatsapp-widget"><WhatsAppButton /></div>
+                    <div id="live-status-widget"><LiveStatusBadge /></div>
                 </ThemeProvider>
             </body>
         </html>

@@ -4,6 +4,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hide main site elements on admin pages */
+.admin-mode #main-navbar,
+.admin-mode #main-footer,
+.admin-mode #chatbot-widget,
+.admin-mode #whatsapp-widget,
+.admin-mode #live-status-widget,
+.admin-mode .particles-container,
+.admin-mode #announcement-bar,
+.admin-mode canvas[class*="fixed"] {
+  display: none !important;
+}
+
 /* ═══════════════════════════════════════
    MYSTIC BASE STYLES
    ═══════════════════════════════════════ */
