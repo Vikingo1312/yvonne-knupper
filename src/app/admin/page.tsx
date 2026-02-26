@@ -29,7 +29,7 @@ export default function AdminDashboardPage() {
                 <div className="absolute -top-10 -right-10 w-40 h-40 bg-mystic-500/10 rounded-full blur-[40px]" />
                 <h2 className="font-display text-2xl italic text-white mb-4">Willkommen, Yvonne! ✨</h2>
                 <p className="text-[var(--text-secondary)] font-body">
-                    Dies ist dein neues Admin Panel. Hier hast du die volle Kontrolle über deine Website. Du kannst oben Links durch die Navigation klicken, um deine Verfügbarkeit (Live-Status), Sprechzeiten und Kundenanfragen zu verwalten.
+                    Dies ist Dein neues Admin Panel. Hier hast Du die volle Kontrolle über Deine Website. Du kannst oben Links durch die Navigation klicken, um Deine Verfügbarkeit (Live-Status), Sprechzeiten und Kundenanfragen zu verwalten.
                 </p>
             </div>
         </div>

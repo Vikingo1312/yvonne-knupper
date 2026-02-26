@@ -7,7 +7,7 @@ import { useTheme } from "./ThemeProvider";
 
 const navLinks = [
     { label: "Home", href: "/" },
-    { label: "Dienste", href: "/#dienste" },
+    { label: "Meine Gaben", href: "/#meine-gaben" },
     { label: "Über mich", href: "/#about" },
     { label: "Tages-Karte", href: "/#tageskarte" },
     { label: "Kontakt", href: "/kontakt" },

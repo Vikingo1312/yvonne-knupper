@@ -18,14 +18,14 @@ export default async function KontaktPage() {
             <div className="max-w-3xl mx-auto text-center">
                 {/* Header */}
                 <span className="font-heading text-xs tracking-[0.5em] uppercase text-mystic-500 font-light">
-                    ✦ Ich freue mich auf dich ✦
+                    ✦ Ich freue mich auf Dich ✦
                 </span>
                 <h1 className="font-display text-4xl sm:text-5xl md:text-6xl glow-text italic mt-4 mb-6">
                     Kontakt
                 </h1>
                 <p className="font-body text-lg text-[var(--text-secondary)] leading-relaxed mb-16 max-w-xl mx-auto">
                     Du möchtest einen Termin vereinbaren oder hast Fragen zu meinen Angeboten?
-                    Da jede Beratung ganz individuell auf deine Fragen und Themen abgestimmt ist,
+                    Da jede Beratung ganz individuell auf Deine Fragen und Themen abgestimmt ist,
                     kontaktiere mich bitte bezüglich Termin und Preis.
                 </p>
 
@@ -38,7 +38,7 @@ export default async function KontaktPage() {
                         <span className="text-4xl block mb-4">📞</span>
                         <h3 className="font-display text-xl italic mb-2">Telefon</h3>
                         <p className="font-body text-[var(--text-secondary)] mb-4">
-                            Ich freue mich auf deinen Anruf für ein persönliches Gespräch.
+                            Ich freue mich auf Deinen Anruf für ein persönliches Gespräch.
                         </p>
                         <a
                             href="tel:+4941018205841"
@@ -53,7 +53,7 @@ export default async function KontaktPage() {
                         <span className="text-4xl block mb-4">✉️</span>
                         <h3 className="font-display text-xl italic mb-2">E-Mail</h3>
                         <p className="font-body text-[var(--text-secondary)] mb-4">
-                            Schreib mir eine Nachricht – ich melde mich bei dir.
+                            Schreib mir eine Nachricht – ich melde mich bei Dir.
                         </p>
                         <a
                             href="mailto:yvonne-knupper@gmx.de"
@@ -91,6 +91,13 @@ export default async function KontaktPage() {
                             Telefonisch & per WhatsApp
                         </span>
                     </div>
+                </div>
+
+                {/* USt-IdNr */}
+                <div className="glass rounded-2xl p-6 mb-16 max-w-md mx-auto text-center">
+                    <p className="font-body text-sm text-[var(--text-secondary)]">
+                        USt-IdNr: <strong className="text-mystic-400">DE 275 344 622</strong>
+                    </p>
                 </div>
 
                 {/* Back link */}

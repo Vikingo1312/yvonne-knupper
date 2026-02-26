@@ -6,42 +6,42 @@ import { useState, useEffect, useMemo, useCallback } from "react";
    COMPLETE LENORMAND DECK – 36 CARDS
    ═══════════════════════════════════════ */
 const lenormandDeck = [
-    { id: 1, name: "Der Reiter", emoji: "🏇", meaning: "Nachrichten, Neuigkeiten und frohe Botschaften sind unterwegs zu dir. Etwas Neues kündigt sich an – sei offen für Bewegung und Veränderung.", keywords: ["Nachrichten", "Bewegung", "Neuanfang"] },
+    { id: 1, name: "Der Reiter", emoji: "🏇", meaning: "Nachrichten, Neuigkeiten und frohe Botschaften sind unterwegs zu Dir. Etwas Neues kündigt sich an – sei offen für Bewegung und Veränderung.", keywords: ["Nachrichten", "Bewegung", "Neuanfang"] },
     { id: 2, name: "Der Klee", emoji: "🍀", meaning: "Ein kleines Glück wartet auf dich! Sei aufmerksam für die kleinen Freuden des Lebens – sie sind die wahren Geschenke des Universums.", keywords: ["Glück", "Freude", "Zufall"] },
-    { id: 3, name: "Das Schiff", emoji: "⛵", meaning: "Eine Reise steht bevor – ob im Außen oder in deinem Inneren. Lass dich von deiner Sehnsucht leiten, sie kennt den Weg.", keywords: ["Reise", "Sehnsucht", "Ferne"] },
-    { id: 4, name: "Das Haus", emoji: "🏠", meaning: "Dein Zuhause, deine Familie, deine Wurzeln brauchen heute Aufmerksamkeit. Finde Stabilität in dem, was dir vertraut ist.", keywords: ["Zuhause", "Familie", "Geborgenheit"] },
-    { id: 5, name: "Der Baum", emoji: "🌳", meaning: "Achte heute besonders auf deine Gesundheit und Lebensenergie. Wie ein Baum brauchst du feste Wurzeln, um in den Himmel zu wachsen.", keywords: ["Gesundheit", "Wachstum", "Lebenskraft"] },
+    { id: 3, name: "Das Schiff", emoji: "⛵", meaning: "Eine Reise steht bevor – ob im Außen oder in Deinem Inneren. Lass Dich von Deiner Sehnsucht leiten, sie kennt den Weg.", keywords: ["Reise", "Sehnsucht", "Ferne"] },
+    { id: 4, name: "Das Haus", emoji: "🏠", meaning: "Dein Zuhause, Deine Familie, Deine Wurzeln brauchen heute Aufmerksamkeit. Finde Stabilität in dem, was Dir vertraut ist.", keywords: ["Zuhause", "Familie", "Geborgenheit"] },
+    { id: 5, name: "Der Baum", emoji: "🌳", meaning: "Achte heute besonders auf Deine Gesundheit und Lebensenergie. Wie ein Baum brauchst Du feste Wurzeln, um in den Himmel zu wachsen.", keywords: ["Gesundheit", "Wachstum", "Lebenskraft"] },
     { id: 6, name: "Die Wolken", emoji: "☁️", meaning: "Manchmal braucht der Himmel Wolken, damit der Regen fallen kann. Vertraue darauf, dass sich die Unklarheiten bald lichten werden.", keywords: ["Unklarheit", "Verwirrung", "Klärung"] },
-    { id: 7, name: "Die Schlange", emoji: "🐍", meaning: "Der Weg mag gewunden sein, doch jede Kurve bringt dich näher an dein Ziel. Achte auf deine Intuition – sie warnt dich vor Umwegen.", keywords: ["Umwege", "Weisheit", "Intuition"] },
-    { id: 8, name: "Der Sarg", emoji: "⚰️", meaning: "Etwas Altes darf heute gehen. In jedem Ende liegt ein Neuanfang verborgen. Lass los, was dir nicht mehr dient.", keywords: ["Ende", "Transformation", "Loslassen"] },
-    { id: 9, name: "Die Blumen", emoji: "💐", meaning: "Freude und Schönheit umgeben dich heute. Öffne dein Herz für die kleinen Überraschungen, die das Leben für dich bereithält.", keywords: ["Freude", "Schönheit", "Überraschung"] },
-    { id: 10, name: "Die Sense", emoji: "⚔️", meaning: "Eine plötzliche Wendung steht an. Sei achtsam mit deinen Entscheidungen heute – manchmal muss man ernten, was man gesät hat.", keywords: ["Entscheidung", "Ernte", "Achtsamkeit"] },
-    { id: 11, name: "Die Ruten", emoji: "🌿", meaning: "Gespräche und Austausch stehen im Vordergrund. Achte darauf, deine Worte mit Bedacht zu wählen – sie haben heute besondere Kraft.", keywords: ["Kommunikation", "Klärung", "Dialog"] },
-    { id: 12, name: "Die Eulen", emoji: "🦉", meaning: "Lass dich nicht von Sorgen überwältigen. Die Eulen mahnen dich, die Dinge ruhiger anzugehen und auf deine innere Weisheit zu hören.", keywords: ["Weisheit", "Ruhe", "Besonnenheit"] },
+    { id: 7, name: "Die Schlange", emoji: "🐍", meaning: "Der Weg mag gewunden sein, doch jede Kurve bringt Dich näher an Dein Ziel. Achte auf Deine Intuition – sie warnt Dich vor Umwegen.", keywords: ["Umwege", "Weisheit", "Intuition"] },
+    { id: 8, name: "Der Sarg", emoji: "⚰️", meaning: "Etwas Altes darf heute gehen. In jedem Ende liegt ein Neuanfang verborgen. Lass los, was Dir nicht mehr dient.", keywords: ["Ende", "Transformation", "Loslassen"] },
+    { id: 9, name: "Die Blumen", emoji: "💐", meaning: "Freude und Schönheit umgeben Dich heute. Öffne Dein Herz für die kleinen Überraschungen, die das Leben für Dich bereithält.", keywords: ["Freude", "Schönheit", "Überraschung"] },
+    { id: 10, name: "Die Sense", emoji: "⚔️", meaning: "Eine plötzliche Wendung steht an. Sei achtsam mit Deinen Entscheidungen heute – manchmal muss man ernten, was man gesät hat.", keywords: ["Entscheidung", "Ernte", "Achtsamkeit"] },
+    { id: 11, name: "Die Ruten", emoji: "🌿", meaning: "Gespräche und Austausch stehen im Vordergrund. Achte darauf, Deine Worte mit Bedacht zu wählen – sie haben heute besondere Kraft.", keywords: ["Kommunikation", "Klärung", "Dialog"] },
+    { id: 12, name: "Die Eulen", emoji: "🦉", meaning: "Lass Dich nicht von Sorgen überwältigen. Die Eulen mahnen dich, die Dinge ruhiger anzugehen und auf Deine innere Weisheit zu hören.", keywords: ["Weisheit", "Ruhe", "Besonnenheit"] },
     { id: 13, name: "Das Kind", emoji: "👶", meaning: "Ein Neuanfang liegt in der Luft! Begegne dem Tag mit der Offenheit und dem Staunen eines Kindes – alles ist möglich.", keywords: ["Neuanfang", "Unschuld", "Offenheit"] },
-    { id: 14, name: "Der Fuchs", emoji: "🦊", meaning: "Vertraue heute besonders auf deine Klugheit. Nicht alles ist, wie es scheint – schaue hinter die Fassaden.", keywords: ["Klugheit", "Vorsicht", "Scharfsinn"] },
-    { id: 15, name: "Der Bär", emoji: "🐻", meaning: "Stärke und Macht begleiten dich heute. Stehe für dich ein und vertraue auf deine innere Kraft.", keywords: ["Stärke", "Schutz", "Autorität"] },
-    { id: 16, name: "Die Sterne", emoji: "⭐", meaning: "Klarheit und Inspiration durchfluten deinen Tag. Die Sterne leuchten dir den Weg – folge deiner Vision und deinen Träumen.", keywords: ["Klarheit", "Inspiration", "Hoffnung"] },
-    { id: 17, name: "Die Störche", emoji: "🦢", meaning: "Veränderungen kommen auf dich zu. Begrüße sie mit offenen Armen – sie bringen die Erneuerung, nach der du dich sehnst.", keywords: ["Veränderung", "Erneuerung", "Wandel"] },
-    { id: 18, name: "Der Hund", emoji: "🐕", meaning: "Treue und Freundschaft stehen heute im Mittelpunkt. Ein verlässlicher Mensch ist an deiner Seite – oder du darfst einer sein.", keywords: ["Treue", "Freundschaft", "Loyalität"] },
-    { id: 19, name: "Der Turm", emoji: "🏰", meaning: "Ziehe dich bewusst zurück und finde Kraft in der Stille. Manchmal brauchen wir den Rückzug, um klarer zu sehen.", keywords: ["Rückzug", "Klarheit", "Stille"] },
-    { id: 20, name: "Der Garten", emoji: "🌺", meaning: "Geselligkeit und Gemeinschaft rufen dich heute. Gehe unter Menschen, tausche dich aus und genieße die Verbundenheit.", keywords: ["Gemeinschaft", "Geselligkeit", "Austausch"] },
-    { id: 21, name: "Der Berg", emoji: "⛰️", meaning: "Ein Hindernis auf deinem Weg? Sieh es als Einladung, über dich hinauszuwachsen. Jeder Berg hat einen Gipfel.", keywords: ["Hindernis", "Ausdauer", "Überwindung"] },
-    { id: 22, name: "Die Wege", emoji: "🔀", meaning: "Eine Entscheidung steht an. Höre tief in dich hinein – deine Seele kennt den richtigen Pfad bereits.", keywords: ["Entscheidung", "Wahl", "Intuition"] },
-    { id: 23, name: "Die Mäuse", emoji: "🐭", meaning: "Lass los, was dich belastet. Manchmal muss man Ballast abwerfen, um leichter durch das Leben zu gleiten.", keywords: ["Loslassen", "Leichtigkeit", "Befreiung"] },
-    { id: 24, name: "Das Herz", emoji: "❤️", meaning: "Die Liebe ist dein Begleiter heute. Ob romantisch oder in tiefer Selbstliebe – öffne dein Herz und lass die Wärme hinein.", keywords: ["Liebe", "Zuneigung", "Herzenswärme"] },
-    { id: 25, name: "Der Ring", emoji: "💍", meaning: "Verbindungen und Versprechen stehen heute im Fokus. Achte auf die Bande, die dich mit anderen verbinden.", keywords: ["Verbindung", "Treue", "Versprechen"] },
-    { id: 26, name: "Das Buch", emoji: "📖", meaning: "Ein Geheimnis möchte enthüllt werden. Bleibe neugierig und offen für das Wissen, das heute zu dir kommt.", keywords: ["Wissen", "Geheimnis", "Erkenntnis"] },
-    { id: 27, name: "Der Brief", emoji: "✉️", meaning: "Eine wichtige Nachricht erreicht dich – ob geschrieben, gesprochen oder gefühlt. Achte auf die Zeichen um dich herum.", keywords: ["Nachricht", "Zeichen", "Botschaft"] },
-    { id: 28, name: "Der Herr", emoji: "🤴", meaning: "Eine männliche Energie beeinflusst deinen Tag. Es kann ein Mensch sein oder die aktive, handelnde Kraft in dir selbst.", keywords: ["Persönlichkeit", "Handlung", "Willenskraft"] },
-    { id: 29, name: "Die Dame", emoji: "👸", meaning: "Die weibliche, empfangende Energie ist heute stark. Vertraue auf deine Intuition und deine innere Weisheit.", keywords: ["Intuition", "Empfänglichkeit", "Weisheit"] },
-    { id: 30, name: "Die Lilie", emoji: "🌸", meaning: "Harmonie und innerer Frieden durchströmen deinen Tag. Genieße die Stille und die Würde des Augenblicks.", keywords: ["Harmonie", "Frieden", "Würde"] },
-    { id: 31, name: "Die Sonne", emoji: "☀️", meaning: "Großes Glück und Lebensfreude strahlen heute auf dich herab! Genieße die Wärme und Energie dieses wundervollen Tages.", keywords: ["Glück", "Erfolg", "Lebensfreude"] },
-    { id: 32, name: "Der Mond", emoji: "🌙", meaning: "Deine Emotionen und Träume sind heute besonders lebendig. Höre auf die leisen Stimmen deiner Seele – sie haben dir etwas zu sagen.", keywords: ["Emotionen", "Träume", "Seele"] },
+    { id: 14, name: "Der Fuchs", emoji: "🦊", meaning: "Vertraue heute besonders auf Deine Klugheit. Nicht alles ist, wie es scheint – schaue hinter die Fassaden.", keywords: ["Klugheit", "Vorsicht", "Scharfsinn"] },
+    { id: 15, name: "Der Bär", emoji: "🐻", meaning: "Stärke und Macht begleiten Dich heute. Stehe für Dich ein und vertraue auf Deine innere Kraft.", keywords: ["Stärke", "Schutz", "Autorität"] },
+    { id: 16, name: "Die Sterne", emoji: "⭐", meaning: "Klarheit und Inspiration durchfluten Deinen Tag. Die Sterne leuchten Dir den Weg – folge Deiner Vision und Deinen Träumen.", keywords: ["Klarheit", "Inspiration", "Hoffnung"] },
+    { id: 17, name: "Die Störche", emoji: "🦢", meaning: "Veränderungen kommen auf Dich zu. Begrüße sie mit offenen Armen – sie bringen die Erneuerung, nach der Du Dich sehnst.", keywords: ["Veränderung", "Erneuerung", "Wandel"] },
+    { id: 18, name: "Der Hund", emoji: "🐕", meaning: "Treue und Freundschaft stehen heute im Mittelpunkt. Ein verlässlicher Mensch ist an Deiner Seite – oder Du darfst einer sein.", keywords: ["Treue", "Freundschaft", "Loyalität"] },
+    { id: 19, name: "Der Turm", emoji: "🏰", meaning: "Ziehe Dich bewusst zurück und finde Kraft in der Stille. Manchmal brauchen wir den Rückzug, um klarer zu sehen.", keywords: ["Rückzug", "Klarheit", "Stille"] },
+    { id: 20, name: "Der Garten", emoji: "🌺", meaning: "Geselligkeit und Gemeinschaft rufen Dich heute. Gehe unter Menschen, tausche Dich aus und genieße die Verbundenheit.", keywords: ["Gemeinschaft", "Geselligkeit", "Austausch"] },
+    { id: 21, name: "Der Berg", emoji: "⛰️", meaning: "Ein Hindernis auf Deinem Weg? Sieh es als Einladung, über Dich hinauszuwachsen. Jeder Berg hat einen Gipfel.", keywords: ["Hindernis", "Ausdauer", "Überwindung"] },
+    { id: 22, name: "Die Wege", emoji: "🔀", meaning: "Eine Entscheidung steht an. Höre tief in Dich hinein – Deine Seele kennt den richtigen Pfad bereits.", keywords: ["Entscheidung", "Wahl", "Intuition"] },
+    { id: 23, name: "Die Mäuse", emoji: "🐭", meaning: "Lass los, was Dich belastet. Manchmal muss man Ballast abwerfen, um leichter durch das Leben zu gleiten.", keywords: ["Loslassen", "Leichtigkeit", "Befreiung"] },
+    { id: 24, name: "Das Herz", emoji: "❤️", meaning: "Die Liebe ist Dein Begleiter heute. Ob romantisch oder in tiefer Selbstliebe – öffne Dein Herz und lass die Wärme hinein.", keywords: ["Liebe", "Zuneigung", "Herzenswärme"] },
+    { id: 25, name: "Der Ring", emoji: "💍", meaning: "Verbindungen und Versprechen stehen heute im Fokus. Achte auf die Bande, die Dich mit anderen verbinden.", keywords: ["Verbindung", "Treue", "Versprechen"] },
+    { id: 26, name: "Das Buch", emoji: "📖", meaning: "Ein Geheimnis möchte enthüllt werden. Bleibe neugierig und offen für das Wissen, das heute zu Dir kommt.", keywords: ["Wissen", "Geheimnis", "Erkenntnis"] },
+    { id: 27, name: "Der Brief", emoji: "✉️", meaning: "Eine wichtige Nachricht erreicht Dich – ob geschrieben, gesprochen oder gefühlt. Achte auf die Zeichen um Dich herum.", keywords: ["Nachricht", "Zeichen", "Botschaft"] },
+    { id: 28, name: "Der Herr", emoji: "🤴", meaning: "Eine männliche Energie beeinflusst Deinen Tag. Es kann ein Mensch sein oder die aktive, handelnde Kraft in Dir selbst.", keywords: ["Persönlichkeit", "Handlung", "Willenskraft"] },
+    { id: 29, name: "Die Dame", emoji: "👸", meaning: "Die weibliche, empfangende Energie ist heute stark. Vertraue auf Deine Intuition und Deine innere Weisheit.", keywords: ["Intuition", "Empfänglichkeit", "Weisheit"] },
+    { id: 30, name: "Die Lilie", emoji: "🌸", meaning: "Harmonie und innerer Frieden durchströmen Deinen Tag. Genieße die Stille und die Würde des Augenblicks.", keywords: ["Harmonie", "Frieden", "Würde"] },
+    { id: 31, name: "Die Sonne", emoji: "☀️", meaning: "Großes Glück und Lebensfreude strahlen heute auf Dich herab! Genieße die Wärme und Energie dieses wundervollen Tages.", keywords: ["Glück", "Erfolg", "Lebensfreude"] },
+    { id: 32, name: "Der Mond", emoji: "🌙", meaning: "Deine Emotionen und Träume sind heute besonders lebendig. Höre auf die leisen Stimmen Deiner Seele – sie haben Dir etwas zu sagen.", keywords: ["Emotionen", "Träume", "Seele"] },
     { id: 33, name: "Der Schlüssel", emoji: "🔑", meaning: "Eine Lösung liegt zum Greifen nah! Vertraue darauf, dass sich die richtige Tür zur richtigen Zeit öffnet.", keywords: ["Lösung", "Erkenntnis", "Durchbruch"] },
-    { id: 34, name: "Die Fische", emoji: "🐟", meaning: "Fülle und Überfluss umgeben dich. Achte heute auf die Geschenke, die das Universum für dich bereithält – materiell und spirituell.", keywords: ["Fülle", "Reichtum", "Überfluss"] },
-    { id: 35, name: "Der Anker", emoji: "⚓", meaning: "Finde Halt in dem, was dir wichtig ist. Der Anker erinnert dich daran, in stürmischen Zeiten deinen Kurs zu halten.", keywords: ["Stabilität", "Beruf", "Beständigkeit"] },
-    { id: 36, name: "Das Kreuz", emoji: "✝️", meaning: "Das Schicksal wirkt heute besonders stark. Vertraue auf den größeren Plan – auch wenn du ihn noch nicht ganz erkennen kannst.", keywords: ["Schicksal", "Spiritualität", "Bestimmung"] },
+    { id: 34, name: "Die Fische", emoji: "🐟", meaning: "Fülle und Überfluss umgeben dich. Achte heute auf die Geschenke, die das Universum für Dich bereithält – materiell und spirituell.", keywords: ["Fülle", "Reichtum", "Überfluss"] },
+    { id: 35, name: "Der Anker", emoji: "⚓", meaning: "Finde Halt in dem, was Dir wichtig ist. Der Anker erinnert Dich daran, in stürmischen Zeiten Deinen Kurs zu halten.", keywords: ["Stabilität", "Beruf", "Beständigkeit"] },
+    { id: 36, name: "Das Kreuz", emoji: "✝️", meaning: "Das Schicksal wirkt heute besonders stark. Vertraue auf den größeren Plan – auch wenn Du ihn noch nicht ganz erkennen kannst.", keywords: ["Schicksal", "Spiritualität", "Bestimmung"] },
 ];
 
 const STORAGE_KEY = "yvonne-tageskarte";
@@ -193,7 +193,7 @@ export default function DailyCard() {
             {/* Prompt or Countdown */}
             {!alreadyDrawnToday ? (
                 <p className="font-body text-[var(--text-secondary)] text-center italic animate-pulse">
-                    Tippe auf die Karte, um deine Tageskarte zu ziehen…
+                    Tippe auf die Karte, um Deine Tageskarte zu ziehen…
                 </p>
             ) : countdown ? (
                 <div className="flex flex-col items-center gap-3 glass rounded-2xl px-8 py-5">
@@ -207,7 +207,7 @@ export default function DailyCard() {
                         {countdown}
                     </p>
                     <p className="font-body text-xs text-mystic-500 italic">
-                        Morgen erwartet dich eine neue Botschaft des Universums
+                        Morgen erwartet Dich eine neue Botschaft des Universums
                     </p>
                 </div>
             ) : null}

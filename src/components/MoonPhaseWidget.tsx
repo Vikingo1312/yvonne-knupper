@@ -15,15 +15,15 @@ function getMoonPhase(): { name: string; emoji: string; message: string; illumin
     const phase = jd / 29.5305882;
     const phaseDay = (phase - Math.floor(phase)) * 29.5305882;
 
-    if (phaseDay < 1.84566) return { name: "Neumond", emoji: "🌑", message: "Zeit für Neuanfänge und innere Einkehr. Der Neumond lädt dich ein, Altes loszulassen und neue Intentionen zu setzen.", illumination: 0 };
-    if (phaseDay < 5.53699) return { name: "Zunehmende Sichel", emoji: "🌒", message: "Setze neue Intentionen und pflanze die Samen deiner Wünsche. Die Energie wächst – nutze sie.", illumination: 15 };
+    if (phaseDay < 1.84566) return { name: "Neumond", emoji: "🌑", message: "Zeit für Neuanfänge und innere Einkehr. Der Neumond lädt Dich ein, Altes loszulassen und neue Intentionen zu setzen.", illumination: 0 };
+    if (phaseDay < 5.53699) return { name: "Zunehmende Sichel", emoji: "🌒", message: "Setze neue Intentionen und pflanze die Samen Deiner Wünsche. Die Energie wächst – nutze sie.", illumination: 15 };
     if (phaseDay < 9.22831) return { name: "Erstes Viertel", emoji: "🌓", message: "Überwinde Hindernisse mit Entschlossenheit. Die halbe Reise ist geschafft – bleib dran.", illumination: 35 };
     if (phaseDay < 12.91963) return { name: "Zunehmender Mond", emoji: "🌔", message: "Deine Stärke wächst – vertraue dem Prozess. Alles fügt sich zusammen.", illumination: 65 };
-    if (phaseDay < 16.61096) return { name: "Vollmond", emoji: "🌕", message: "Höchste Energie – manifestiere deine Wünsche! Der Vollmond bringt Klarheit und Erfüllung.", illumination: 100 };
-    if (phaseDay < 20.30228) return { name: "Abnehmender Mond", emoji: "🌖", message: "Zeit für Dankbarkeit und Reflexion. Erkenne, wie weit du schon gekommen bist.", illumination: 65 };
-    if (phaseDay < 23.99361) return { name: "Letztes Viertel", emoji: "🌗", message: "Loslassen und Vergeben. Befreie dich von dem, was dir nicht mehr dient.", illumination: 35 };
-    if (phaseDay < 27.68493) return { name: "Abnehmende Sichel", emoji: "🌘", message: "Ruhe und Regeneration – bereite dich auf den nächsten Zyklus vor.", illumination: 15 };
-    return { name: "Neumond", emoji: "🌑", message: "Zeit für Neuanfänge und innere Einkehr. Der Neumond lädt dich ein, Altes loszulassen.", illumination: 0 };
+    if (phaseDay < 16.61096) return { name: "Vollmond", emoji: "🌕", message: "Höchste Energie – manifestiere Deine Wünsche! Der Vollmond bringt Klarheit und Erfüllung.", illumination: 100 };
+    if (phaseDay < 20.30228) return { name: "Abnehmender Mond", emoji: "🌖", message: "Zeit für Dankbarkeit und Reflexion. Erkenne, wie weit Du schon gekommen bist.", illumination: 65 };
+    if (phaseDay < 23.99361) return { name: "Letztes Viertel", emoji: "🌗", message: "Loslassen und Vergeben. Befreie Dich von dem, was Dir nicht mehr dient.", illumination: 35 };
+    if (phaseDay < 27.68493) return { name: "Abnehmende Sichel", emoji: "🌘", message: "Ruhe und Regeneration – bereite Dich auf den nächsten Zyklus vor.", illumination: 15 };
+    return { name: "Neumond", emoji: "🌑", message: "Zeit für Neuanfänge und innere Einkehr. Der Neumond lädt Dich ein, Altes loszulassen.", illumination: 0 };
 }
 
 export default function MoonPhaseWidget() {

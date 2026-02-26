@@ -18,7 +18,7 @@ const services = [
     {
         title: "Dualseelen Coaching",
         subtitle: "Seelentiefe Verbindung",
-        description: "Begegnungen, die sich von der ersten Sekunde magisch anfühlen. Ich begleite dich auf dem Weg zu deiner Dualseele.",
+        description: "Begegnungen, die sich von der ersten Sekunde magisch anfühlen. Ich begleite Dich auf dem Weg zu Deiner Dualseele.",
         icon: "💫",
         href: "/dualseelen",
         image: "/images/dualseelen-new.png",
@@ -26,7 +26,7 @@ const services = [
     {
         title: "Kerzenrituale",
         subtitle: "Die Kraft des Feuers",
-        description: "Eine uralte Form der Magie. Deine Energie, deine Worte, deine Ausrichtung – alles verbindet sich beim Entzünden der Kerze.",
+        description: "Eine uralte Form der Magie. Deine Energie, Deine Worte, Deine Ausrichtung – alles verbindet sich beim Entzünden der Kerze.",
         icon: "🕯️",
         href: "/kerzenrituale",
         image: "/images/kerzenrituale.jpg",
@@ -140,7 +140,7 @@ export default function HomePage() {
                     {/* Subtitle */}
                     <p className="font-body text-lg sm:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed mb-14">
                         Seit Generationen liegt die Gabe der spirituellen Wahrnehmung in meiner Familie.
-                        Ich öffne dir den Raum, in dem die leisen Stimmen der Ahnen sichtbar werden.
+                        Ich öffne Dir den Raum, in dem die leisen Stimmen der Ahnen sichtbar werden.
                     </p>
 
                     {/* CTA Buttons */}
@@ -152,10 +152,10 @@ export default function HomePage() {
                             Termin vereinbaren
                         </Link>
                         <Link
-                            href="/#dienste"
+                            href="/#meine-gaben"
                             className="px-10 py-4 glass rounded-2xl font-heading text-sm tracking-widest uppercase text-mystic-300 glow-hover transition-all duration-400"
                         >
-                            Meine Dienste
+                            Meine Gaben
                         </Link>
                     </div>
                 </div>
@@ -167,14 +167,14 @@ export default function HomePage() {
             {/* ═══════════════════════════════════════
           SERVICES SECTION – More spacing
           ═══════════════════════════════════════ */}
-            <section id="dienste" className="py-32 px-4 relative z-10">
+            <section id="meine-gaben" className="py-32 px-4 relative z-10">
                 <div ref={addRef} className="reveal-section max-w-7xl mx-auto">
                     <div className="text-center mb-20">
                         <span className="font-heading text-xs tracking-[0.5em] uppercase text-mystic-500 font-light">
-                            ✦ Was ich für dich tun kann ✦
+                            ✦ Was ich für Dich tun kann ✦
                         </span>
                         <h2 className="font-display text-4xl sm:text-5xl tracking-wide mt-6 glow-text italic">
-                            Meine Dienste
+                            Meine Gaben
                         </h2>
                         <div className="w-32 h-px bg-gradient-to-r from-transparent via-mystic-500 to-transparent mx-auto mt-8" />
                     </div>
@@ -240,7 +240,7 @@ export default function HomePage() {
                         </h2>
                         <p className="font-body text-lg text-[var(--text-secondary)] mt-6 max-w-lg mx-auto leading-relaxed">
                             Ziehe jeden Tag eine Lenormand-Karte und erhalte eine persönliche Botschaft
-                            des Universums für deinen Tag.
+                            des Universums für Deinen Tag.
                         </p>
                         <div className="w-32 h-px bg-gradient-to-r from-transparent via-rose-500 to-transparent mx-auto mt-8" />
                     </div>
@@ -366,10 +366,10 @@ export default function HomePage() {
                         <div className="relative z-10">
                             <span className="text-5xl block mb-8">🔮</span>
                             <h2 className="font-display text-3xl sm:text-4xl tracking-wide glow-text italic mb-6">
-                                Bereit für deine Reise?
+                                Bereit für Deine Reise?
                             </h2>
                             <p className="font-body text-xl text-[var(--text-secondary)] mb-10 max-w-lg mx-auto leading-relaxed">
-                                Jede Beratung ist individuell auf deine Fragen und Themen abgestimmt.
+                                Jede Beratung ist individuell auf Deine Fragen und Themen abgestimmt.
                                 Kontaktiere mich und wir finden gemeinsam den richtigen Weg.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-5 justify-center">

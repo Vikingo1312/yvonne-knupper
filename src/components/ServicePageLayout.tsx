@@ -83,7 +83,7 @@ export default function ServicePageLayout({
             <section className="py-20 px-4">
                 <div className="max-w-4xl mx-auto">
                     <h2 className="font-display text-3xl tracking-wide italic glow-text text-center mb-12">
-                        Was dich erwartet
+                        Was Dich erwartet
                     </h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         {benefits.map((benefit, i) => (
