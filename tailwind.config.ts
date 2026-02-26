@@ -47,6 +47,7 @@ const config: Config = {
                 'float-slow': 'float-gentle 8s ease-in-out infinite',
                 'glow-pulse': 'glowPulse 3s ease-in-out infinite',
                 'moon-glow': 'moonGlow 4s ease-in-out infinite',
+                'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
             },
             keyframes: {
                 'float-gentle': {
@@ -60,6 +61,10 @@ const config: Config = {
                 moonGlow: {
                     '0%, 100%': { filter: 'drop-shadow(0 0 8px rgba(192, 132, 252, 0.4))' },
                     '50%': { filter: 'drop-shadow(0 0 20px rgba(192, 132, 252, 0.6))' },
+                },
+                pulseGlow: {
+                    '0%, 100%': { opacity: '0', transform: 'scale(1)' },
+                    '50%': { opacity: '0.6', transform: 'scale(1.15)' },
                 },
             },
         },
