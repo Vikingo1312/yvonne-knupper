@@ -211,11 +211,10 @@ export default function Chatbot() {
 
     return (
         <>
-            {/* Chatbot Toggle Button */}
+            {/* Chatbot Toggle Button – always ABOVE WhatsApp */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`fixed z-50 w-14 h-14 rounded-full overflow-hidden shadow-lg hover:scale-110 transition-all duration-300 ${isOpen ? "bottom-6 right-6" : "bottom-24 right-6"
-                    }`}
+                className="fixed bottom-[88px] right-6 z-50 w-14 h-14 rounded-full overflow-hidden shadow-lg shadow-mystic-500/30 hover:scale-110 transition-all duration-300"
                 aria-label={isOpen ? "Chat schließen" : "Chat öffnen"}
             >
                 {isOpen ? (
@@ -233,11 +232,13 @@ export default function Chatbot() {
                         className="w-full h-full object-cover"
                     />
                 )}
+                {/* Soft glow when closed */}
+                {!isOpen && <span className="absolute inset-0 rounded-full border-2 border-mystic-400/40 animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite]" />}
             </button>
 
             {/* Chat Window */}
             {isOpen && (
-                <div className="fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-48px)] h-[500px] max-h-[60vh] flex flex-col glass rounded-2xl glow-border overflow-hidden animate-fade-in-up">
+                <div className="fixed bottom-[160px] right-6 z-50 w-[360px] max-w-[calc(100vw-48px)] h-[480px] max-h-[55vh] flex flex-col glass rounded-2xl glow-border overflow-hidden animate-fade-in-up">
                     {/* Header */}
                     <div className="flex items-center gap-3 p-4 border-b border-mystic-800/30 bg-gradient-to-r from-mystic-900/50 to-surface-card">
                         <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
