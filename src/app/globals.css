@@ -10,9 +10,7 @@
 .admin-mode #chatbot-widget,
 .admin-mode #whatsapp-widget,
 .admin-mode #live-status-widget,
-.admin-mode .particles-container,
-.admin-mode #announcement-bar,
-.admin-mode canvas[class*="fixed"] {
+.admin-mode #announcement-bar {
   display: none !important;
 }
 

@@ -64,9 +64,9 @@ export default function RuneParticles() {
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
             char: RUNE_CHARS[Math.floor(Math.random() * RUNE_CHARS.length)],
-            size: 8 + Math.random() * 14,
+            size: 12 + Math.random() * 12,
             opacity: 0,
-            targetOpacity: isDark ? (0.08 + Math.random() * 0.18) : (0.15 + Math.random() * 0.25),
+            targetOpacity: isDark ? (0.25 + Math.random() * 0.35) : (0.4 + Math.random() * 0.3),
             speed: 0.05 + Math.random() * 0.15,
             drift: (Math.random() - 0.5) * 0.3,
             phase: Math.random() * Math.PI * 2,
@@ -75,8 +75,8 @@ export default function RuneParticles() {
 
         const init = () => {
             resize();
-            const count = Math.floor((canvas.width * canvas.height) / 60000);
-            particles = Array.from({ length: Math.min(count, 40) }, createParticle);
+            const count = Math.floor((canvas.width * canvas.height) / 40000);
+            particles = Array.from({ length: Math.min(count, 60) }, createParticle);
         };
 
         const animate = () => {
