@@ -157,9 +157,9 @@ export default function Chatbot() {
             return { text: "💜 Ich spüre, dass Du gerade eine schwere Last trägst, liebe Seele…\n\nDu bist nicht allein. Yvonne kann Dir helfen, Klarheit zu finden und Blockaden zu lösen.\n\nMöchtest Du, dass ich Deine Kontaktdaten an Yvonne weiterleite? Sie wird sich persönlich bei Dir melden. 🌙\n\n👇 Klicke auf 'Anfrage senden' unten!", isDefault: true };
         }
 
-        // DEFAULT: Show contact form hint
+        // DEFAULT: Proactively offer to create contact
         return {
-            text: "✨ Das ist eine sehr persönliche Frage, liebe Seele… Manche Antworten kann nur Yvonne selbst Dir geben – mit ihrem Blick hinter die Schleier.\n\n📝 **Hinterlasse Deine Kontaktdaten** und Yvonne wird sich persönlich bei Dir melden!\n\nOder ruf direkt an: 📞 +49 (0)41 018205841\n\n👇 Klicke auf 'Anfrage senden' unten!",
+            text: "✨ Das ist eine wundervolle Frage, liebe Seele! Dafür brauchen wir Yvonnes persönliche Expertise.\n\n🤗 Ich kann gerne für Dich den Kontakt herstellen! Gib mir einfach Deine Daten und Yvonne wird sich persönlich bei Dir zurückmelden.\n\n👇 Trag Dich unten ein – ich leite alles direkt weiter!",
             isDefault: true
         };
     };
