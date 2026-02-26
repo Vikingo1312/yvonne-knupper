@@ -53,7 +53,9 @@ export default function AdminLoginPage() {
                             onChange={(e) => setUsername(e.target.value)}
                             required
                             placeholder="Benutzername"
-                            className="w-full bg-surface-dark/50 border border-mystic-800/50 rounded-xl px-4 py-4 text-white placeholder-mystic-600 focus:outline-none focus:border-mystic-500 transition-colors text-center"
+                            autoComplete="username"
+                            className="w-full rounded-xl px-4 py-4 text-base focus:outline-none focus:border-mystic-500 transition-colors text-center border border-mystic-700"
+                            style={{ backgroundColor: '#1a1a2e', color: '#ffffff', WebkitTextFillColor: '#ffffff' }}
                         />
                         <input
                             type="password"
@@ -61,7 +63,9 @@ export default function AdminLoginPage() {
                             onChange={(e) => setPassword(e.target.value)}
                             required
                             placeholder="Passwort eingeben"
-                            className="w-full bg-surface-dark/50 border border-mystic-800/50 rounded-xl px-4 py-4 text-white placeholder-mystic-600 focus:outline-none focus:border-mystic-500 transition-colors text-center"
+                            autoComplete="current-password"
+                            className="w-full rounded-xl px-4 py-4 text-base focus:outline-none focus:border-mystic-500 transition-colors text-center border border-mystic-700"
+                            style={{ backgroundColor: '#1a1a2e', color: '#ffffff', WebkitTextFillColor: '#ffffff' }}
                         />
                     </div>
 
