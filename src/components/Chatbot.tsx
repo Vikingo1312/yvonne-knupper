@@ -306,7 +306,7 @@ export default function Chatbot() {
                                 value={contactName}
                                 onChange={(e) => setContactName(e.target.value)}
                                 placeholder="Dein Name *"
-                                className="w-full bg-surface-dark border border-mystic-800/30 rounded-lg px-3 py-2 text-sm text-white placeholder:text-mystic-600 focus:outline-none focus:border-mystic-500"
+                                className="w-full bg-surface-dark border border-mystic-800/30 rounded-lg px-3 py-2 text-base text-white placeholder:text-mystic-600 focus:outline-none focus:border-mystic-500"
                             />
                             <div className="flex gap-2">
                                 <input
@@ -314,14 +314,14 @@ export default function Chatbot() {
                                     value={contactEmail}
                                     onChange={(e) => setContactEmail(e.target.value)}
                                     placeholder="E-Mail"
-                                    className="flex-1 bg-surface-dark border border-mystic-800/30 rounded-lg px-3 py-2 text-sm text-white placeholder:text-mystic-600 focus:outline-none focus:border-mystic-500"
+                                    className="flex-1 bg-surface-dark border border-mystic-800/30 rounded-lg px-3 py-2 text-base text-white placeholder:text-mystic-600 focus:outline-none focus:border-mystic-500"
                                 />
                                 <input
                                     type="tel"
                                     value={contactPhone}
                                     onChange={(e) => setContactPhone(e.target.value)}
                                     placeholder="Telefon"
-                                    className="flex-1 bg-surface-dark border border-mystic-800/30 rounded-lg px-3 py-2 text-sm text-white placeholder:text-mystic-600 focus:outline-none focus:border-mystic-500"
+                                    className="flex-1 bg-surface-dark border border-mystic-800/30 rounded-lg px-3 py-2 text-base text-white placeholder:text-mystic-600 focus:outline-none focus:border-mystic-500"
                                 />
                             </div>
                             <button
@@ -343,7 +343,7 @@ export default function Chatbot() {
                                 onChange={(e) => setInput(e.target.value)}
                                 onKeyDown={(e) => e.key === "Enter" && sendMessage()}
                                 placeholder="Frag die Geistführerin..."
-                                className="flex-1 bg-surface-dark border border-mystic-800/30 rounded-xl px-4 py-2.5 text-sm font-body text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:border-mystic-500 transition-colors"
+                                className="flex-1 bg-surface-dark border border-mystic-800/30 rounded-xl px-4 py-2.5 text-base font-body text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:border-mystic-500 transition-colors"
                             />
                             <button
                                 onClick={sendMessage}
