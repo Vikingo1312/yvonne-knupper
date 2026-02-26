@@ -1,0 +1,450 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Outfit:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════
+   MYSTIC BASE STYLES
+   ═══════════════════════════════════════ */
+
+:root {
+  --bg-primary: #0a0a14;
+  --bg-surface: #12121f;
+  --bg-card: #1a1a2e;
+  --text-primary: #e8e8f0;
+  --text-secondary: #a0a0b8;
+  --accent-purple: #c084fc;
+  --accent-rose: #fb7185;
+  --accent-silver: #c0c0d0;
+  --accent-ice: #a5b4fc;
+  --glow-color: rgba(192, 132, 252, 0.4);
+}
+
+.light-mode {
+  --bg-primary: #f8f4f0;
+  --bg-surface: #ffffff;
+  --bg-card: #f3ede8;
+  --text-primary: #1e1030;
+  --text-secondary: #5a4a6a;
+  --accent-purple: #7c3aed;
+  --accent-rose: #db2777;
+  --accent-silver: #4b5563;
+  --accent-ice: #4f46e5;
+  --glow-color: rgba(124, 58, 237, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Cormorant Garamond', serif;
+  overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+::selection {
+  background: rgba(192, 132, 252, 0.3);
+  color: #fff;
+}
+
+.light-mode ::selection {
+  background: rgba(124, 58, 237, 0.2);
+  color: #1e1030;
+}
+
+/* ═══════════════════════════════════════
+   SCROLLBAR
+   ═══════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent-purple), var(--accent-rose));
+  border-radius: 3px;
+}
+
+/* ═══════════════════════════════════════
+   PARTICLES BACKGROUND
+   ═══════════════════════════════════════ */
+
+.particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--accent-purple);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particleFloat linear infinite;
+  box-shadow: 0 0 6px var(--accent-purple), 0 0 12px rgba(192, 132, 252, 0.3);
+}
+
+.light-mode .particle {
+  box-shadow: 0 0 4px var(--accent-purple), 0 0 8px rgba(124, 58, 237, 0.2);
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+
+  90% {
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translateY(-10vh) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* ═══════════════════════════════════════
+   NEBULA / FOG EFFECT
+   ═══════════════════════════════════════ */
+
+.nebula-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(251, 113, 133, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(165, 180, 252, 0.05) 0%, transparent 50%);
+  animation: nebulaShift 20s ease-in-out infinite alternate;
+}
+
+.light-mode .nebula-overlay {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(124, 58, 237, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(251, 113, 133, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(165, 180, 252, 0.03) 0%, transparent 50%);
+}
+
+@keyframes nebulaShift {
+  0% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.7;
+  }
+}
+
+/* ═══════════════════════════════════════
+   GLASSMORPHISM
+   ═══════════════════════════════════════ */
+
+.glass {
+  background: rgba(18, 18, 31, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(192, 132, 252, 0.1);
+}
+
+.light-mode .glass {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(124, 58, 237, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* ═══════════════════════════════════════
+   MYSTIC GLOW EFFECTS
+   ═══════════════════════════════════════ */
+
+.glow-text {
+  text-shadow: 0 0 20px var(--glow-color), 0 0 40px rgba(192, 132, 252, 0.2), 0 0 80px rgba(192, 132, 252, 0.08);
+}
+
+.light-mode .glow-text {
+  text-shadow: none;
+  color: var(--text-primary);
+}
+
+.glow-border {
+  box-shadow: 0 0 15px var(--glow-color), inset 0 0 15px rgba(192, 132, 252, 0.05);
+}
+
+.light-mode .glow-border {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(124, 58, 237, 0.1);
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 25px var(--glow-color), 0 0 50px rgba(192, 132, 252, 0.2);
+  transform: translateY(-2px);
+  transition: all 0.4s ease;
+}
+
+.light-mode .glow-hover:hover {
+  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.15);
+}
+
+/* ═══════════════════════════════════════
+   RUNE SCROLL INDICATOR
+   ═══════════════════════════════════════ */
+
+.rune-scroll-indicator {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  animation: float 3s ease-in-out infinite;
+  cursor: pointer;
+}
+
+.rune-arrow {
+  width: 40px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-purple);
+  filter: drop-shadow(0 0 8px var(--glow-color));
+  transition: all 0.3s ease;
+}
+
+.rune-arrow:hover {
+  color: var(--accent-rose);
+  filter: drop-shadow(0 0 15px rgba(251, 113, 133, 0.5));
+  transform: scale(1.1);
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+/* ═══════════════════════════════════════
+   SERVICE CARDS 3D EFFECT (ENHANCED)
+   ═══════════════════════════════════════ */
+
+.service-card {
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid rgba(192, 132, 252, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.light-mode .service-card {
+  background: #fff;
+  border: 1px solid rgba(124, 58, 237, 0.08);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* Animated gradient border glow trail */
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  background: linear-gradient(135deg, rgba(192, 132, 252, 0.3), rgba(251, 113, 133, 0.2), rgba(165, 180, 252, 0.3));
+  border-radius: 17px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Light refraction shine on hover */
+.service-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(192, 132, 252, 0.06), transparent);
+  transition: left 0.8s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.service-card:hover::after {
+  left: 150%;
+}
+
+.service-card:hover {
+  transform: translateY(-10px) rotateX(3deg) rotateY(-1deg);
+  border-color: rgba(192, 132, 252, 0.25);
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(192, 132, 252, 0.12),
+    0 0 80px rgba(192, 132, 252, 0.06);
+}
+
+.light-mode .service-card:hover {
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    0 0 20px rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.2);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════
+   LENORMAND CARD FLIP
+   ═══════════════════════════════════════ */
+
+.card-flip-container {
+  perspective: 1000px;
+  width: 200px;
+  height: 320px;
+  cursor: pointer;
+}
+
+.card-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.card-flip-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-front {
+  background: linear-gradient(135deg, #1a1a2e, #2d1b4e);
+  border: 2px solid rgba(192, 132, 252, 0.3);
+  box-shadow: 0 0 20px rgba(192, 132, 252, 0.2);
+}
+
+.light-mode .card-front {
+  background: linear-gradient(135deg, #f3ede8, #e8dff0);
+  border: 2px solid rgba(124, 58, 237, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-back {
+  background: linear-gradient(135deg, #12121f, #1a1a2e);
+  border: 2px solid rgba(251, 113, 133, 0.3);
+  transform: rotateY(180deg);
+  padding: 20px;
+  text-align: center;
+}
+
+.light-mode .card-back {
+  background: linear-gradient(135deg, #ffffff, #f8f0fc);
+  border: 2px solid rgba(219, 39, 119, 0.2);
+}
+
+/* ═══════════════════════════════════════
+   SECTION REVEAL ANIMATION
+   ═══════════════════════════════════════ */
+
+.reveal-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.reveal-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════
+   FADE-IN ANIMATION
+   ═══════════════════════════════════════ */
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .rune-scroll-indicator {
+    bottom: 20px;
+  }
+
+  .card-flip-container {
+    width: 160px;
+    height: 260px;
+  }
+}
